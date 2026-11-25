@@ -1,0 +1,8 @@
+<nav th:fragment="nav" class="nav">
+  <a class="brand" th:href="@{/employees}">People<span>Desk</span></a>
+  <div class="nav-links"><a th:href="@{/employees}">Employees</a>
+    <a th:href="@{/employees/new}" sec:authorize="hasAnyRole('ADMIN','HR')">Add employee</a>
+    <span class="user" sec:authentication="name"></span>
+    <form th:action="@{/logout}" method="post" class="inline"><button class="nav-button">Logout</button></form>
+  </div>
+</nav>

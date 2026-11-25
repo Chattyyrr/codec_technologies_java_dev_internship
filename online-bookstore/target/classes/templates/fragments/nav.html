@@ -1,0 +1,10 @@
+<nav th:fragment="nav" class="nav">
+  <a class="brand" th:href="@{/}">BookNest</a>
+  <div><a th:href="@{/}">Books</a><a th:href="@{/cart}">Cart</a>
+    <a th:href="@{/orders}" sec:authorize="isAuthenticated()">My orders</a>
+    <a th:href="@{/admin/books}" sec:authorize="hasRole('ADMIN')">Manage books</a>
+    <a th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
+    <a th:href="@{/register}" sec:authorize="isAnonymous()">Register</a>
+    <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()" class="inline"><button class="link">Logout</button></form>
+  </div>
+</nav>

@@ -1,0 +1,6 @@
+<!doctype html><html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><head><title>BookNest | Online Bookstore</title><link rel="stylesheet" th:href="@{/css/style.css}"></head><body><div th:replace="~{fragments/nav :: nav}"></div>
+<header class="hero"><p class="eyebrow">A LITTLE SOMETHING FOR EVERY READER</p><h1>Find your next<br><em>great read.</em></h1><p>Explore stories, ideas and knowledge across genres.</p>
+<form class="search" method="get" th:action="@{/}"><input name="q" placeholder="Search by title or author..." th:value="${q}"><button>Search</button></form></header>
+<main class="container"><div class="section-head"><div><p class="eyebrow">THE COLLECTION</p><h2>Books worth opening</h2></div><span th:text="${books.size()} + ' titles'"></span></div>
+<div class="book-grid"><article class="book-card" th:each="book : ${books}"><div class="cover"><span>BOOKNEST</span><strong th:text="${book.title}"></strong><small th:text="${book.author}"></small></div><div class="book-info"><h3 th:text="${book.title}"></h3><p th:text="${book.author}"></p><div class="card-bottom"><b th:text="'₹' + ${book.price}"></b><a th:href="@{/books/{id}(id=${book.id})}">View book →</a></div></div></article></div>
+<p th:if="${books.isEmpty()}" class="empty">No books found. Try another search.</p></main></body></html>
